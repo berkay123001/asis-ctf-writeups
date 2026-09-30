@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.DS_Store
+FLAG
+flag.txt
+*.log
+*.out
+*.pem
+*.key
+*.der
+out/
+out2/
