@@ -14,10 +14,10 @@ Görsel alanında Cloudflare Image Resizing'in `onerror=redirect` seçeneği var
 
 Sıradan `https://proxydough.net/api/recipe.php` yönlendirmesi uygulamaya ulaşıyor, fakat uzak IP nedeniyle `Access not allowed.` dönüyordu. Bu hata önemliydi: ilk iki adımın çalıştığını, eksik parçanın loopback bağlantısı olduğunu gösterdi.
 
-Başarılı örnekte yönlendirme URL'sinde **ham ters eğik çizgi** vardı:
+Başarılı örnekte yönlendirme URL'sinde `@` öncesinde **iki ham ters eğik çizgi** vardı:
 
 ```text
-https://img.proxydough.net/cdn-cgi/image/onerror=redirect/http://proxydough.net\@127.0.0.1/api/recipe.php
+https://img.proxydough.net/cdn-cgi/image/onerror=redirect/http://proxydough.net\\@127.0.0.1/api/recipe.php
 ```
 
 Cloudflare bu değeri yönlendirmeye taşıdı. PHP'nin sonraki URL ayrıştırması son `@` işaretinden sonraki `127.0.0.1` adresine bağlandı; böylece `recipe.php` isteği loopback kaynağından geldi. `%5C` yazımı aynı bayt dizisi olmadığından bu denemede işe yaramadı. Son istek, proxy'nin `url` parametresi bu görsel URL'si olacak şekilde yapıldı.
