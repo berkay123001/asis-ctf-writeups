@@ -14,16 +14,18 @@ Görsel alanında Cloudflare Image Resizing'in `onerror=redirect` seçeneği var
 
 Sıradan `https://proxydough.net/api/recipe.php` yönlendirmesi uygulamaya ulaşıyor, fakat uzak IP nedeniyle `Access not allowed.` dönüyordu. Bu hata önemliydi: ilk iki adımın çalıştığını, eksik parçanın loopback bağlantısı olduğunu gösterdi.
 
-Başarılı örnekte yönlendirme URL'sinde `@` öncesinde **iki ham ters eğik çizgi** vardı:
+Başarılı örnekte yönlendirme URL'sinde `@` öncesinde **bir ham ters eğik çizgi** vardı:
 
 ```text
-https://img.proxydough.net/cdn-cgi/image/onerror=redirect/http://proxydough.net\\@127.0.0.1/api/recipe.php
+https://img.proxydough.net/cdn-cgi/image/onerror=redirect/http://proxydough.net\@127.0.0.1/api/recipe.php
 ```
 
-Cloudflare bu değeri yönlendirmeye taşıdı. PHP'nin sonraki URL ayrıştırması son `@` işaretinden sonraki `127.0.0.1` adresine bağlandı; böylece `recipe.php` isteği loopback kaynağından geldi. `%5C` yazımı aynı bayt dizisi olmadığından bu denemede işe yaramadı. Son istek, proxy'nin `url` parametresi bu görsel URL'si olacak şekilde yapıldı.
+Cloudflare bu değeri yönlendirmeye taşıdı. PHP'nin sonraki URL ayrıştırması son `@` işaretinden sonraki `127.0.0.1` adresine bağlandı; böylece `recipe.php` isteği loopback kaynağından geldi. `%5C` ifadesini **Cloudflare'a ulaşan iç URL'nin içinde** bırakmak, ham `\` ile aynı deneme değildi ve o yolda işe yaramadı. Dıştaki proxy sorgu parametresi URL-encode edilebilir: PHP onu önce çözer, iç URL'de yine tek ham `\` kalır. Başarılı oturumdaki `curl --data-urlencode "url=$payload"` isteği bu ayrımı kullanıyordu.
 
 Canlı sonuç: `ASIS{802ab2a8f0f435759ad6d1dfe8999de0}`.
 
 ## Öğrenilen ders
 
 Bir URL'nin yalnızca ilk hop'unu denetlemek, yönlendirmeleri de denetlemek anlamına gelmez. Ham isteğin baytları bu çözümde belirleyiciydi; istemci tarafından normalleştirilen veya yüzde kodlanmış sürüm farklı davranıyor. [Verilen PHP kaynakları](source/proxy.php), kontrolün nerede uygulandığını ve loopback şartını incelemek için eklendi. Kaynakta görünen fake flag'in canlı flag kanıtı olarak kullanılmaması gerekiyor.
+
+[trefor'un bağımsız writeup'ı](https://github.com/hax1ng/ASIS-CTF-Quals-2026/blob/main/web/proxy-dough/README.md) aynı tek ham ters eğik çizgiyi ve dış sorgu parametresindeki `%5C` kodlamasını ayrı ayrı gösteriyor.

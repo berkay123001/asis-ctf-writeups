@@ -23,3 +23,7 @@ Bu bir **debugger ile flag kurtarma** kaydıdır. Birleşik MAC için dışarıd
 ## Öğrenilen ders
 
 Bir challenge'ın şifreli artefaktından flag çıkarmak ve challenge doğrulayıcısını normal akışta geçmek ayrı sonuçlardır. İki ayrı debugger çalışması flag'in bu ikili ve bu `flag.enc` ile ilişkisini doğruladı; burada daha ileri bir başarı iddia edilmiyor. Orijinal artefaktların SHA-256 değerleri [yayın kaydında](../../docs/PROVENANCE.md) bulunur.
+
+## Bağımsız çözümle karşılaştırma
+
+[trefor'un Atarude writeup'ı](https://github.com/hax1ng/ASIS-CTF-Quals-2026/blob/main/rev/atarude/README.md), iki oracle çıktısından 11 blokluk aday şifreli metinler birleştirip altı şeridin her biri için maske seçen **normal akış çözümünü** anlatıyor. Yazar, birleşik MAC'in iki yerel aday arasından doğru yönü seçtiğini ve son betiğin değiştirilmemiş ikilide çalıştığını bildiriyor. Bu, yukarıdaki debugger kurtarma yönteminden ayrı bir çalışmadır; [onun betiği](https://github.com/hax1ng/ASIS-CTF-Quals-2026/blob/main/rev/atarude/solve.py) bu arşivin `work/` kodu veya burada bağımsızca doğrulanmış bir sonuç olarak sunulmuyor.

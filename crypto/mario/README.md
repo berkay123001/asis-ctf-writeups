@@ -22,3 +22,7 @@ kanonik baz → HKDF("MARIO") → AES-GCM doğrulaması
 Sonuç: `ASIS{MARY0___grOe8n3r___8aSi5_chA1L3n9e_Mas7eR3d_r3A1Ly?!!!}`. Bu flag'in doğrulaması yerel kriptografik etiketten geliyor; canlı scoreboard gönderimi kaydı değil.
 
 Çalıştırma için `pycryptodome` gerekir: `python3 solve.py`. [Kaynak üretici](source/mario.py), raporların nasıl hazırlandığını görmek isteyenler içindir.
+
+## Bağımsız matematiksel bakış
+
+[Abdelkad3r'in Mario writeup'ı](https://github.com/Abdelkad3r/ASIS-CTF-Quals-2026/blob/master/Crypto/Mario/README.md) aynı 25 boyutlu sızıntıyı, her kuadratik formun bu uzayda ortak bir doğrusal çarpan taşıması üzerinden türetiyor. Rank-2 polar formların 23 boyutlu çekirdekleri iki farklı form için birleştirilince 24 boyutlu oil uzayı elde ediliyor. Bu, yukarıda kullanılan ortak görüntü/tek boyutlu fonksiyon bakışının eşdeğer ama farklı öğretici bir açıklaması; yazarın kodu bu arşive kopyalanmadı.

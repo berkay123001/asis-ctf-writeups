@@ -21,3 +21,7 @@ Bu son adımın offsetleri yayımlanan [qjs](qjs) sürümüne özeldir; farklı 
 ## Arşiv
 
 [exploit.js](exploit.js) bellek zincirini, [solve.py](solve.py) ise yarışma servisinin `-- EOF --` protokolünü ve yanıt ayrıştırmasını gösterir. `solve.py` eski canlı hedefi varsayılan olarak içerir. `qjs` orijinal çözümlü challenge dağıtımından alınan analiz artefaktıdır; burada servis veya SUID `/readflag` çalıştırılmıyor.
+
+## Bağımsız yaklaşım
+
+[trefor'un QFilter writeup'ı](https://github.com/hax1ng/ASIS-CTF-Quals-2026/blob/main/pwn/qfilter/README.md) aynı referans-sayımı kusurundan farklı tahsis/leak düzeni kuruyor: 15 baytlık dangling string ile PIE, 31 baytlık string ile heap sızıntısı; son çağrı zincirinde `Reflect.apply` kullanılıyor. Bizim yolumuzda 31 karakterlik string ve `byteLength` getter'ı öne çıkıyor. Karşılaştırma, UAF'nin tek bir sabit exploit dizisine mahkûm olmadığını gösteriyor.

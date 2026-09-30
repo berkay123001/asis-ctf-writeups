@@ -22,3 +22,7 @@ Slot serbest bırakma yolu, `tail >= head` iken `[head, tail)` aralığını tar
 Asıl yetki atlaması 2. adımda oluşur: `drain`, kuyruktaki kaydın bugün hâlâ warden'ın onayladığı aynı içerik olup olmadığını yeniden kontrol etmiyor. Sonraki adımlar bu yetki atlamasını flag okumasına çeviriyor.
 
 [solve.py](solve.py), çözüm oturumunda `/tmp/dlq_exp.py` olarak tutulan betiğin arşivlenmiş kopyasıdır. Gerekli bağımlılık `pwntools`; betik iki argüman olarak host ve port bekler. İkili artefaktlar: [relay](relay), [warden](warden), [worker](worker).
+
+## Bağımsız yaklaşım
+
+[trefor'un Dead Letter writeup'ı](https://github.com/hax1ng/ASIS-CTF-Quals-2026/blob/main/pwn/dead-letter/README.md) aynı kuyrukta farklı bir sınır durumunu kullanıyor: bizim tam dolu `head == tail, count == 6` durumumuz yerine sarmış kuyrukta iptal edilen kaydın eksik aralık taramasından kaçmasını gösteriyor. İki anlatımın ortak kökü, kuyruğun tuttuğu slot numarasının serbest bırakma/yeniden kullanma sonrasında da yetkili kabul edilmesi. Dış betik burada kendi exploit'imizin parçası olarak sayılmıyor.

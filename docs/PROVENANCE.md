@@ -17,6 +17,10 @@ Bu depo `/home/berkayhsrt/ASIS-CFT` içindeki geçmiş yarışma çalışma klas
 
 Yayıma yalnızca bu on çözüm/kurtarma kaydı alındı. `Mousa`, `Collector`, `Dark Pixels`, `OutOfPhase`, `Lottery Race` gibi tamamlanmamış çalışmalar ve ham çalışma notları eklenmedi. Kaybolmuş çözüm dosyaları için sayı veya başarı iddiası türetilmedi.
 
+## Dış kaynakların statüsü
+
+[Bağımsız okuma rehberindeki](EXTERNAL-READING.md) bağlantılar üçüncü taraf yazarların kendi depolarına gider. Arşivde çözülmemiş sorular için dış writeup bulmak, yukarıdaki yerel çözüm tablosuna yeni bir başarı eklemez. Üçüncü taraf metinleri, kodları ve flag'leri bu depoya kopyalanmadı; challenge sayfalarındaki kısa karşılaştırmalar yazarı belirtilmiş okuma önerileridir. Dış yazarın belirttiği çalıştırma sonucu, ayrıca yerel olarak denenmedikçe burada doğrulanmış sonuç diye sunulmaz.
+
 ## Artefakt kimliği
 
 | Dosya | SHA-256 |

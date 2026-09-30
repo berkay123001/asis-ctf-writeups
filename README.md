@@ -6,13 +6,15 @@
 
 ASIS CTF arşivimden doğrulanmış çözümler ve yerel olarak yeniden üretilebilen analizler.
 
-[Web](#web) · [Pwn](#pwn) · [Crypto](#crypto) · [Reverse](#reverse) · [Misc](#misc)
+[Çözümler](#doğrulanmış-çalışmalar) · [Bağımsız okumalar](docs/EXTERNAL-READING.md)
 
 </div>
 
 ---
 
 Bu koleksiyon, elimde çözüm kanıtı ve yeterli teknik notu bulunan çalışmalardan oluşur. Yarışmadaki bütün soruları veya geçmişte çözdüğüm bütün soruları temsil etmez; bazı eski çözümlerin dosyaları günümüze ulaşmadı. Her sayfada sonuç, temel fikir, çözüm adımları ve doğrulama sınırı açıkça yazılıdır.
+
+## Doğrulanmış çalışmalar
 
 | Kategori | Çalışma | Temel konu | Kayıt |
 |:--|:--|:--|:--|
@@ -26,6 +28,10 @@ Bu koleksiyon, elimde çözüm kanıtı ve yeterli teknik notu bulunan çalışm
 | Crypto | [Mario](crypto/mario/README.md) | Sonlu cisimde altuzay kurtarma | GCM etiketi doğrulandı |
 | Reverse | [Atarude](rev/atarude/README.md) | MAC analizi ve debugger ile flag kurtarma | Debugger ile flag |
 | Misc | [2048 / Citadel Grid](misc/2048/README.md) | Tomcat Tribes deserialization | Canlı flag |
+
+## Bağımsız okumalar
+
+[Hibrit okuma rehberi](docs/EXTERNAL-READING.md), aynı sorulara dair başka yazarların farklı yöntemlerini ve kendi arşivimde çözümü bulunmayan sorular için dış kaynakları ayrı listeler. Dış bağlantılar **benim çözümüm veya doğruladığım flag kanıtı sayılmaz**; üçüncü taraf metin ve betikler buraya kopyalanmadı. Özellikle [Atarude](rev/atarude/README.md) için başka bir solver'ın normal program akışındaki çözümü, benim debugger ile kurtarma kaydımdan farklıdır.
 
 ## Nasıl okunur?
 
@@ -43,7 +49,7 @@ pwn/      QFilter · Revenant Buddy · Signal Race · Dead Letter Queue
 crypto/   Mario
 rev/      Atarude
 misc/     2048 / Citadel Grid
-docs/     Yayın kapsamı ve kontrol kaydı
+docs/     Kaynak izi, bağımsız okuma ve kontrol kaydı
 ```
 
 Sorular ve düzeltmeler için GitHub Issues kullanılabilir. Yeni challenge'lar yalnızca doğrulanmış bir çözüm ve anlaşılır bir anlatımla eklenir.
